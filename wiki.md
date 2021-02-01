@@ -87,7 +87,7 @@ _start:
 	mov ecx, 6		; number of iterations
 
 label:
-	add ebx, ebx	; ebx += ebx
+	add ebx, ebx		; ebx += ebx
 	dec ecx			; ecx -= 1 (decrement)
 	cmp ecx, 0		; compare ecx with 0
 	jg label		; jump to label if greater
@@ -97,7 +97,7 @@ label:
 
 ```shell
 $ echo $?
-16
+64
 ```
 
 ### Resources
