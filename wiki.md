@@ -288,28 +288,28 @@ times2:
 	ret
 ```
 
-> Example
+> Example of calling an external function in C
 
 ```asm
 global main		; main lable for C
 extern printf	; use an external function from C
 
 section .data
-    msg db "Testing %i...", 0x0a, 0x00
+	msg db "Testing %i...", 0x0a, 0x00
 	; hold the format string to call printf with
 	; 0x0a -> newline character
 	; 0x00 -> end of string
 
 main:
-    push ebp
-    mov ebp, esp
-    push 123	; push in reverse order
-    push msg	; push in reverse order
-    call printf
-    mov eax, 0	; exit status. 0 means things went correctly
-    mov esp, ebp
-    pop ebp
-    ret
+	push ebp
+	mov ebp, esp
+	push 123	; push in reverse order
+	push msg	; push in reverse order
+	call printf
+	mov eax, 0	; exit status. 0 means things went correctly
+	mov esp, ebp
+	pop ebp
+	ret
 ```
 
 ```shell
