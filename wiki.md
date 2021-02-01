@@ -1,6 +1,6 @@
-## table of content
+## Table of content
 
-### registers
+### Registers
 
 ```asm
 mov ebx, 123    ; ebx = 123 (assignment)
@@ -11,5 +11,35 @@ mul ebx         ; eax *= ebx (always apply to the eax register)
 div edx         ; eax /= edx (always apply to the eax register)
 ```
 
-### resources
+### Instruction pointer
+
+- Assembly lacks the usual constructs for iteration, conditions and function calls. Instead, the programmer needs to build this kind of behaviour using `jump instructions`.
+
+- `Instruction pointer` is an internal pointer in the process that is often labeled as `EIP`. As your program runs, this pointer hold the location for your machine code that the processor is executing. This means the processer can jump around to different location of code, by altering this pointer.
+
+- You can't use this pointer like a register with `mov`, `add` and etc. Instead, the instruction pointer is changed by using `jump operations`.
+
+> example of jump instructions
+
+```asm
+global _start
+
+section .text
+_start:
+    mov ebx, 42         ; exit status is 42
+    mov eax, 1          ; sys_exit system call
+    jmp skip            ; jump to "skip" label
+    mov ebx, 13         ; exit status is 13
+						; this reserves as an error check, as if the jump works, the 'ebx' will stay as 42
+
+skip:					; creating a label
+    int 0x80
+```
+
+```shell
+$ echo $?
+42
+```
+
+### Resources
 - [Intro to x86 Assembly Language (Part 1)](https://www.youtube.com/watch?v=wLXIWKUWpSs)

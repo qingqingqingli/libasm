@@ -3,10 +3,11 @@ global _start
 ; this will allow us inline data into the program
 ; that we can reference in the code by name
 
-section .data 
-    msg db "hello, world!", 0x0a    ;0x0a is hex for 10 & code for the new line char
-    len equ $ - msg                 ;use equ not db allows you to change the message
-                                    ;without needing to changing the len
+section .data
+    msg db "hello, world!", 0x0a    ; 0x0a is hex for 10 & code for the new line char
+    len equ $ - msg                 ; use equ not db allows you to change the message
+                                    ; without needing to changing the len
+									; this is done by subtracting the location
 
 section .text
 _start:
