@@ -33,6 +33,28 @@
 
 [![compilation_stage](https://github.com/qingqingqingli/libasm/blob/main/images/compilation_stages.png)](https://github.com/qingqingqingli/libasm)
 
+
+### 80x86 instructions
+
+- 80x86 instructions can be (roughly) divided into eight different classes:
+
+1) Data movement instructions
+	- `mov`, `lea`, `les`, `push`, `pop`, `pushf`, `popf`
+2) Conversions
+	- `cbw`, `cwd`, `xlat`
+3) Arithmetic instructions
+	- `add`, `inc`, `sub`, `dec`, `cmp`, `neg`, `mul`, `imul`, `div`, `idiv`
+4) Logical, shift, rotate, and bit instructions
+	- `and`, `or`, `xor`, `not`, `shl`, `shr`, `rcl`, `rcr`
+5) I/O instructions
+	- `in`, `out`
+6) String instructions
+	- `movs`, `stos`, `lods`
+7) Program flow control instructions
+	- `jmp`, `call`, `ret`, conditional jumps
+8) Miscellaneous instructions.
+	- `clc`, `stc`, `cmc`
+
 ### Operands
 
 - There are three kinds of operands:
@@ -363,10 +385,6 @@ Testing 123...
 - [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 - [What is stack frame in assembly?](https://stackoverflow.com/questions/3699283/what-is-stack-frame-in-assembly)
 - [Use of EAX register in system calls](https://stackoverflow.com/questions/47692516/what-is-the-use-of-eax-register-in-the-context-of-system-calls-in-linux)
-- []()
-- []()
-- []()
-- []()
 - []()
 - []()
 - []()
