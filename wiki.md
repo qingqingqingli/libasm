@@ -212,7 +212,7 @@ Hey
 
 > Example of a function call
 
-```ams
+```asm
 global _start
 
 _start:
@@ -257,8 +257,8 @@ func:
 	int 0x80
 	mov esp, ebp		; store the right location on the top of the stack
 	pop ebp			; pop the original value into ebp, so you don't mess up with the value
-			; push & pop ebp help nested function calls without the functions
-			; interfering with each other's stack
+				; push & pop ebp help nested function calls without the functions
+				; interfering with each other's stack
   ret
 ```
 
