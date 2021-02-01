@@ -110,6 +110,101 @@ echo $?
 64
 ```
 
+### Memory access and stack operation
+
+- Stack pointer (`ESP`) starts high in address in memory and moves down with pushes and back up with pops
+
+- Push operation is the same as moving the stack pointer and moves a value to the where the stack pointer points to
+
+```asm
+; same effect
+push 357
+
+sub esp, 4
+mov [esp], dword 357	; dword tells assembler that it's moving 4 bytes to the memory location
+
+; same effect
+pop eax		; it pops the top value on the stack to the eax register
+
+mov eax, dword [esp]
+add esp, 4
+
+
+```
+
+> Example of common data types
+
+```asm
+
+section	.data
+	; bd is 1 byte
+
+	name1 db "string"
+	name2 db 0xff	; hex value
+	name3 db 100
+
+	; bw is 2 bytes
+	name4 dw 0x1234
+	name3 dw 1000
+
+	; bd is 4 bytes
+	name3 dd 10000
+```
+
+
+> Example of accessing memory
+
+```asm
+global _start
+
+section .data
+    addr db "yellow"        ; addr is a pointer to some memory address
+                            ; which is a string taht contains the word "yellow"
+
+section .text
+_start:
+    mov [addr], byte 'H'    ; access the 0 position & add 'H' to the position
+    mov [addr + 5], byte '!'; access the 5th position ('w') & add '!' to the position
+    mov eax, 4              ; sys_write system call
+    mov ebx, 1              ; stdout file descriptor
+    mov ecx, addr           ; bytes to sys_write
+    mov edx, 6              ; number of bytes to write
+    int 0x80                ; perform system call
+    mov eax, 1              ; system_exit system call
+    mov ebx, 0              ; exit status is 0
+    int 0x80
+```
+
+```shell
+hello
+```
+
+> Example
+
+```asm
+global _start
+
+_start:
+	sub esp, 4				; allocat 4 bytes on the stack
+	mov [esp], byte 'H'
+	mov [esp + 1], byte 'e'
+	mov [esp + 2], byte 'y'
+	mov [esp + 3], byte '!'
+	mov eax, 4				; sys_write
+	mov ebx, 1				; stdout file descriptor
+	mov ecx, esp			; pointer to bytes to sys_write
+	mov edx, 4				; number of bytes to write
+	int 0x80
+	mov eax, 1				; sys_exit
+	mov ebx, 0				; exit status is 0
+    int 0x80
+```
+
+```shell
+Hey
+```
+
+
 ### Resources
 - [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
 
