@@ -15,11 +15,18 @@
 
 - Because assembly depends on the machine code instructions, every assembler has its own assembly language which is designed for exactly one specific computer architecture.
 
+- What’s right with assembly language: `speed`, `space`, `capability` and `knowledge`. Assembly language programs are often less than one-half the size of comparable HLL programs.
+
+- Good assembly language programmers make better HLL programmers because they understand the limitations of the compiler and they know what it’s doing with their code. Those who don’t know assembly language will accept the poor performance their compiler produces and simply shrug it off.
+
 ### NASM (Netwide Assembler)
 
 - Assembly code is converted into executable machine code by a utility program referred to as an assembler. The conversion process is referred to as `assembly`.
 
 - NASM is an assembler for the x86 CPu architecture portable to nearly every modern platform, and with code generation for many platforms old and new.
+
+
+### Compilation stages
 
 
 ### Operaands
