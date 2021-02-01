@@ -3,11 +3,11 @@
 - [Intro to assembly language]()
 - [NASM (Netwide Assembler)]()
 - [Compilation stages]()
+- [X86 architecture]()
 - [Registers]()
 - [Instruction pointer]()
 - [Memory access and stack operation]()
 - [Functions]()
-- []()
 - []()
 - []()
 - [Resources]()
@@ -26,7 +26,7 @@
 
 - Assembly code is converted into executable machine code by a utility program referred to as an assembler. The conversion process is referred to as `assembly`.
 
-- NASM is an assembler for the x86 CPu architecture portable to nearly every modern platform, and with code generation for many platforms old and new.
+- NASM is an assembler for the x86 CPU architecture portable to nearly every modern platform, and with code generation for many platforms old and new.
 
 
 ### Compilation stages
@@ -55,12 +55,55 @@
 8) Miscellaneous instructions.
 	- `clc`, `stc`, `cmc`
 
+### X86 architecture
+
+- The x86 architecture has 8 General-Purpose Register (GPR), 6 Segment Registers, 1 Flags Register and an Instruction Pointer. 64-bit x86 has additional register.
+
+- **General-Purpose Register(GPR) - 16-bit naming convention**
+
+1. `Accumulator register` (`AX`). Used in arithmetic operations
+2. `Counter register` (`CX`). Used in shift/rotate instructions and loops.
+3. `Data register` (`DX`). Used in arithmetic operations and I/O operations.
+4. `Base register` (`BX`). Used as a pointer to data (located in segment register DS, when in segmented mode).
+5. `Stack Pointer register` (`SP`). Pointer to the top of the stack.
+6. `Stack Base Pointer register` (`BP`). Used to point to the base of the stack.
+7. `Source Index register` (`SI`). Used as a pointer to a source in stream operations.
+8. `Destination Index register` (`DI`). Used as a pointer to a destination in stream operations.
+
+- In `32-bit` mode, this two-letter abbreviation is prefixed with an 'E'
+(extended). In the `64-bit` version, the 'E' is replaced with an 'R' (register)
+
+- 64-bit x86 adds `8 more general-purpose registers`, named R8, R9, R10 and so on up to R15.
+
+    9. `R8–R15` are the new 64-bit registers.
+    10. `R8D–R15D` are the lowermost 32 bits of each register.
+    11. `R8W–R15W` are the lowermost 16 bits of each register.
+    12. `R8B–R15B` are the lowermost 8 bits of each register.
+
+- **Segment Registers**
+
+- `Stack Segment` (`SS`). Pointer to the stack.
+- `Code Segment` (`CS`). Pointer to the code.
+- `Data Segment` (`DS`). Pointer to the data.
+- `Extra Segment` (`ES`). Pointer to extra data ('E' stands for 'Extra').
+- `F Segment` (`FS`). Pointer to more extra data ('F' comes after 'E').
+- `G Segment` (`GS`). Pointer to still more extra data ('G' comes after 'F').
+
+- **EFLAGS Register**
+
+- The EFLAGS is a `32-bit` register used as a collection of bits representing Boolean values to store the results of operations and the state of the processor.
+
+- **Instruction Pointer**
+
+- `RIP`: This is the full 64-bit instruction pointer and should be used instead of EIP.
+
 ### Operands
 
 - There are three kinds of operands:
 	- Register operands
 	- Memory operands
 	- Immediate operands
+
 
 ### Registers
 
