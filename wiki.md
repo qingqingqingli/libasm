@@ -19,7 +19,19 @@ div edx         ; eax /= edx (always apply to the eax register)
 
 - You can't use this pointer like a register with `mov`, `add` and etc. Instead, the instruction pointer is changed by using `jump operations`.
 
-> example of unconditional jump instructions
+> `jump instruction` overview
+
+```asm
+je		A, B 	; Jump if Equal
+jne		A, B 	; Jump if Not Equal
+jg		A, B 	; Jump if Greater
+jge		A, B 	; Jump if Greater or Equal
+jl		A, B 	; Jump if Less
+jle		A, B 	; Jump if Less or Equal
+```
+
+
+> Example of `unconditional` jump instructions
 
 ```asm
 global _start
@@ -41,5 +53,29 @@ $ echo $?
 42
 ```
 
+> Example of `conditional` jump instructions
+
+```asm
+global _start
+
+section .text
+_start:
+    mov ecx, 101		; set ecx to 101
+	mov ebx, 42         ; exit status is 42
+    mov eax, 1          ; sys_exit system call
+	cmp ecx, 100		; compare ecx to 100 (set flags based on the comparison)
+    jl skip             ; jump if less than
+    mov ebx, 13         ; exit status is 13 (error check)
+
+skip:					; creating a label
+    int 0x80
+```
+
+```shell
+$ echo $?
+13
+```
+
 ### Resources
 - [Intro to x86 Assembly Language (Part 1)](https://www.youtube.com/watch?v=wLXIWKUWpSs)
+- [Intro to x86 Assembly Language (Part 2)](https://www.youtube.com/watch?v=cFGJhn97e3s)
