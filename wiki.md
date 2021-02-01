@@ -28,6 +28,7 @@
 
 ### Compilation stages
 
+[![compilation_stage](https://github.com/qingqingqingli/libasm/blob/main/images/compilation_stages.png)](https://github.com/qingqingqingli/libasm)
 
 ### Operaands
 
