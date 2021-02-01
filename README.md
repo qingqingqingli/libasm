@@ -6,9 +6,9 @@
 
 ## Technical considerations
 
-- It is written in 64 bits ASM, compiled with [NASM](https://www.nasm.us/)
+- It is written in `64 bits` ASM, compiled with [NASM](https://www.nasm.us/)
 
-- It follows the Intel syntax
+- It follows the `Intel` syntax
 
 - It rewrites the following functions:
 	- `ft_strlen`
@@ -18,4 +18,4 @@
 	- `ft_read`
 	- `ft_strdup`
 
-- Erroes during syscalls need to be checked and set properly
+- `Errors` during syscalls need to be checked and set properly
