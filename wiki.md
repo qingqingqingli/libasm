@@ -49,7 +49,7 @@ skip:			; creating a label
 ```
 
 ```shell
-$ echo $?
+echo $?
 42
 ```
 
@@ -72,7 +72,7 @@ skip:				; creating a label
 ```
 
 ```shell
-$ echo $?
+echo $?
 13
 ```
 
@@ -96,7 +96,7 @@ label:
 ```
 
 ```shell
-$ echo $?
+echo $?
 64
 ```
 
