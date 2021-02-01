@@ -2,8 +2,8 @@
 
 - [Registers]()
 - [Instruction pointer]()
-- []()
-- []()
+- [Memory access and stack operation]()
+- [Functions]()
 - []()
 - []()
 - []()
@@ -260,6 +260,64 @@ func:
 				; push & pop ebp help nested function calls without the functions
 				; interfering with each other's stack
 	ret
+```
+
+### Handle return value
+
+- A function that pushes data to the stack is also responsible for removing that data
+
+> Example of calling a function
+
+```asm
+global _start
+
+_start:
+	push 21
+	call times2
+	mov ebx, eax
+	mov eax, 1
+	int 0x80
+
+times2:
+	push ebp
+	mov ebp, esp
+	mov eax, [ebp+8]
+	add eax, eax
+	mov esp, ebp
+	pop ebp
+	ret
+```
+
+> Example
+
+```asm
+global main		; main lable for C
+extern printf	; use an external function from C
+
+section .data
+    msg db "Testing %i...", 0x0a, 0x00
+	; hold the format string to call printf with
+	; 0x0a -> newline character
+	; 0x00 -> end of string
+
+main:
+    push ebp
+    mov ebp, esp
+    push 123	; push in reverse order
+    push msg	; push in reverse order
+    call printf
+    mov eax, 0	; exit status. 0 means things went correctly
+    mov esp, ebp
+    pop ebp
+    ret
+```
+
+```shell
+
+$ nasm -f elf32 ex10.asm -o ex10.o
+$ gcc -m32 ex10.o -o ex10
+$ ./ex10
+Testing 123...
 ```
 
 ### Resources
