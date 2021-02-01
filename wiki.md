@@ -124,7 +124,7 @@ sub esp, 4
 mov [esp], dword 357	; dword tells assembler that it's moving 4 bytes to the memory location
 
 ; same effect
-pop eax		; it pops the top value on the stack to the eax register
+pop eax			; it pops the top value on the stack to the eax register
 
 mov eax, dword [esp]
 add esp, 4
