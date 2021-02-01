@@ -6,11 +6,11 @@
 
 ## Technical considerations
 
-- It is written in `64 bits` ASM, compiled with [NASM](https://www.nasm.us/)
+- The project is written in `64 bits` ASM, compiled with [NASM](https://www.nasm.us/)
 
 - It follows the `Intel` syntax
 
-- It rewrites the following functions:
+- The following functions are rewritten in assembly:
 	- `ft_strlen`
 	- `ft_strcpy`
 	- `ft_strcmp`
