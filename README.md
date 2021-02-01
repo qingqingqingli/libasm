@@ -11,11 +11,11 @@
 - It follows the `Intel` syntax
 
 - The following functions are rewritten in assembly:
-	- `ft_strlen`
-	- `ft_strcpy`
-	- `ft_strcmp`
-	- `ft_write`
-	- `ft_read`
-	- `ft_strdup`
+	- `ft_strlen`: calculate the length of a string
+	- `ft_strcpy`: copy a string
+	- `ft_strcmp`: compare two strings
+	- `ft_write`: write to a file descriptor
+	- `ft_read`: read from a file descriptor
+	- `ft_strdup`: duplicate a string
 
 - `Errors` during syscalls need to be checked and set properly
