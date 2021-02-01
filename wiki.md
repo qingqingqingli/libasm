@@ -1,5 +1,8 @@
 ## Table of content
 
+- [Intro to assembly language]()
+- [NASM (Netwide Assembler)]()
+- [Compilation stages]()
 - [Registers]()
 - [Instruction pointer]()
 - [Memory access and stack operation]()
@@ -30,7 +33,7 @@
 
 [![compilation_stage](https://github.com/qingqingqingli/libasm/blob/main/images/compilation_stages.png)](https://github.com/qingqingqingli/libasm)
 
-### Operaands
+### Operands
 
 - There are three kinds of operands:
 	- Register operands
@@ -38,6 +41,8 @@
 	- Immediate operands
 
 ### Registers
+
+- A register is a storage inside the processor core. It can be accessed at much higher speeds than conventional memory.
 
 ```asm
 mov ebx, 123    ; ebx = 123 (assignment)
@@ -357,7 +362,7 @@ Testing 123...
 - [x86-64 assembly from scratch](https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/)
 - [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 - [What is stack frame in assembly?](https://stackoverflow.com/questions/3699283/what-is-stack-frame-in-assembly)
-- []()
+- [Use of EAX register in system calls](https://stackoverflow.com/questions/47692516/what-is-the-use-of-eax-register-in-the-context-of-system-calls-in-linux)
 - []()
 - []()
 - []()
