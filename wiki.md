@@ -9,6 +9,25 @@
 - []()
 - [Resources]()
 
+### Intro to assembly language
+
+- Each assembly language is specific to a particular computer architecture. Assembly language is also called `symbolic machine code`. It usually has one statement per machine instruction (1:1).
+
+- Because assembly depends on the machine code instructions, every assembler has its own assembly language which is designed for exactly one specific computer architecture.
+
+### NASM (Netwide Assembler)
+
+- Assembly code is converted into executable machine code by a utility program referred to as an assembler. The conversion process is referred to as `assembly`.
+
+- NASM is an assembler for the x86 CPu architecture portable to nearly every modern platform, and with code generation for many platforms old and new.
+
+
+### Operaands
+
+- There are three kinds of operands:
+	- Register operands
+	- Memory operands
+	- Immediate operands
 
 ### Registers
 
@@ -322,4 +341,19 @@ Testing 123...
 
 ### Resources
 - [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
-
+- [X86 assembly wikibook](https://en.wikibooks.org/wiki/X86_Assembly)
+- [NASM tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+- [Introduction to x64 Assembly](https://software.intel.com/content/www/us/en/develop/articles/introduction-to-x64-assembly.html)
+- [x64 Cheat Sheet](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
+- [x86 Assembly, 64 bit](https://aaronbloomfield.github.io/pdr/book/x86-64bit-asm-chapter.pdf)
+- [x86-64 assembly from scratch](https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/)
+- [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+- [What is stack frame in assembly?](https://stackoverflow.com/questions/3699283/what-is-stack-frame-in-assembly)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
