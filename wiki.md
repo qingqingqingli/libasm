@@ -62,13 +62,13 @@ global _start
 section .text
 _start:
 	mov ecx, 101		; set ecx to 101
-	mov ebx, 42			; exit status is 42
-	mov eax, 1			; sys_exit system call
+	mov ebx, 42		; exit status is 42
+	mov eax, 1		; sys_exit system call
 	cmp ecx, 100		; compare ecx to 100 (set flags based on the comparison)
-	jl skip				; jump if less than
-	mov ebx, 13			; exit status is 13 (error check)
+	jl skip			; jump if less than
+	mov ebx, 13		; exit status is 13 (error check)
 
-skip:					; creating a label
+skip:				; creating a label
     int 0x80
 ```
 
