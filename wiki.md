@@ -259,7 +259,7 @@ func:
 	pop ebp			; pop the original value into ebp, so you don't mess up with the value
 				; push & pop ebp help nested function calls without the functions
 				; interfering with each other's stack
-  ret
+	ret
 ```
 
 ### Resources
