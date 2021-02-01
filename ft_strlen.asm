@@ -1,7 +1,7 @@
 global	_start		; entry point for the program
 
 section .data
-	hello db "Welcome back", 0x0a
+	hello dw "Welcome back", 0x0a
 	len equ $ - hello
 
 section .text

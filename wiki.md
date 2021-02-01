@@ -388,7 +388,7 @@ times2:
 > Example of calling an external function in C
 
 ```asm
-global main		; main lable for C
+global main		; main label for C
 extern printf	; use an external function from C
 
 section .data
@@ -416,6 +416,8 @@ $ gcc -m32 ex10.o -o ex10
 $ ./ex10
 Testing 123...
 ```
+
+###
 
 ### Resources
 - [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
