@@ -42,9 +42,9 @@ _start:
     mov eax, 1          ; sys_exit system call
     jmp skip            ; jump to "skip" label
     mov ebx, 13         ; exit status is 13
-						; this reserves as an error check, as if the jump works, the 'ebx' will stay as 42
+				; this reserves as an error check, as if the jump works, the 'ebx' will stay as 42
 
-skip:					; creating a label
+skip:			; creating a label
     int 0x80
 ```
 
