@@ -19,7 +19,7 @@ div edx         ; eax /= edx (always apply to the eax register)
 
 - You can't use this pointer like a register with `mov`, `add` and etc. Instead, the instruction pointer is changed by using `jump operations`.
 
-> example of jump instructions
+> example of unconditional jump instructions
 
 ```asm
 global _start
