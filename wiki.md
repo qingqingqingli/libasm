@@ -30,7 +30,6 @@ jl	A, B 	; Jump if Less
 jle	A, B 	; Jump if Less or Equal
 ```
 
-
 > Example of `unconditional` jump instructions
 
 ```asm
@@ -77,6 +76,30 @@ $ echo $?
 13
 ```
 
+> Example of iteration
+
+```asm
+global _start
+
+section .text
+_start:
+	mov ebx, 1		; start ebx at 1
+	mov ecx, 6		; number of iterations
+
+label:
+	add ebx, ebx	; ebx += ebx
+	dec ecx			; ecx -= 1 (decrement)
+	cmp ecx, 0		; compare ecx with 0
+	jg label		; jump to label if greater
+	mov eax, 1		; sys_exit system call
+	int 0x80
+```
+
+```shell
+$ echo $?
+16
+```
+
 ### Resources
-- [Intro to x86 Assembly Language (Part 1)](https://www.youtube.com/watch?v=wLXIWKUWpSs)
-- [Intro to x86 Assembly Language (Part 2)](https://www.youtube.com/watch?v=cFGJhn97e3s)
+- [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
+
