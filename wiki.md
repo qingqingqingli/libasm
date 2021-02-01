@@ -237,10 +237,10 @@ func:
 global _start
 
 _start:
-    call func
-    mov eax, 1
-    mov ebx, 0
-    int 0x80
+	call func
+	mov eax, 1
+	mov ebx, 0
+	int 0x80
 
 func:
 	push ebp		; preserve the old value of ebp onto the stack
