@@ -110,6 +110,8 @@
 
 - A register is a storage inside the processor core. It can be accessed at much higher speeds than conventional memory.
 
+> Examples of registers action
+
 ```asm
 mov ebx, 123    ; ebx = 123 (assignment)
 mov eax, ebx    ; eax = ebx (assignment)
@@ -186,15 +188,16 @@ global _start
 
 section .text
 _start:
-    mov ebx, 42         ; exit status is 42
-    mov eax, 1          ; sys_exit system call
+    mov ebx, 42         ; exit status is 42 (holds exit status code)
+    mov eax, 1          ; sys_exit system call (a system call of exit())
     jmp skip            ; jump to "skip" label
     mov ebx, 13         ; exit status is 13
 			; this reserves as an error check
 			; if the jump works, the 'ebx' will stay as 42
 
 skip:			; creating a label
-    int 0x80
+    int 0x80		; int means interrupt
+					; 0x80 is the interrupt number, which means kernel in Linux (32-bit)
 ```
 
 ```shell
@@ -459,7 +462,27 @@ $ ./ex10
 Testing 123...
 ```
 
-###
+### Difference between 32-bit code and 64-bit code
+
+> 32-bit code:
+
+```asm
+mov eax,4    ; In "int 0x80" style 4 means: write
+mov ebx,1    ; ... and the first arg. is stored in ebx
+mov ecx,esp  ; ... and the second arg. is stored in ecx
+mov edx,1    ; ... and the third arg. is stored in edx
+int 0x80
+```
+
+> 64-bit code:
+
+```asm
+mov rax,1    ; In "syscall" style 1 means: write
+mov rdi,1    ; ... and the first arg. is stored in rdi (not rbx)
+mov rsi,rsp  ; ... and the second arg. is stored in rsi (not rcx)
+mov rdx,1    ; ... and the third arg. is stored in rdx
+syscall
+```
 
 ### Resources
 - [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
