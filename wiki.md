@@ -82,20 +82,20 @@
 
 - **Segment Registers**
 
-- `Stack Segment` (`SS`). Pointer to the stack.
-- `Code Segment` (`CS`). Pointer to the code.
-- `Data Segment` (`DS`). Pointer to the data.
-- `Extra Segment` (`ES`). Pointer to extra data ('E' stands for 'Extra').
-- `F Segment` (`FS`). Pointer to more extra data ('F' comes after 'E').
-- `G Segment` (`GS`). Pointer to still more extra data ('G' comes after 'F').
+	- `Stack Segment` (`SS`). Pointer to the stack.
+	- `Code Segment` (`CS`). Pointer to the code.
+	- `Data Segment` (`DS`). Pointer to the data.
+	- `Extra Segment` (`ES`). Pointer to extra data ('E' stands for 'Extra').
+	- `F Segment` (`FS`). Pointer to more extra data ('F' comes after 'E').
+	- `G Segment` (`GS`). Pointer to still more extra data ('G' comes after 'F').
 
 - **EFLAGS Register**
 
-- The EFLAGS is a `32-bit` register used as a collection of bits representing Boolean values to store the results of operations and the state of the processor.
+	- The EFLAGS is a `32-bit` register used as a collection of bits representing Boolean values to store the results of operations and the state of the processor.
 
 - **Instruction Pointer**
 
-- `RIP`: This is the full 64-bit instruction pointer and should be used instead of EIP.
+	- `RIP`: This is the full 64-bit instruction pointer and should be used instead of EIP.
 
 ### Operands
 
@@ -117,6 +117,47 @@ sub ebx, edx    ; ebx -= edx (subtract in place)
 mul ebx         ; eax *= ebx (always apply to the eax register)
 div edx         ; eax /= edx (always apply to the eax register)
 ```
+
+- **How to pick different registers?** [source](https://www.swansontec.com/sregisters.html)
+
+	- Using registers according to Intel's original plan allows the code to take full advantage of these optimizations.
+
+	- `EAX: The Accumulator`
+		- Most calculations occur in the accumulator.
+		- All nine basic operations (ADD, ADC, AND, CMP, OR, SBB, SUB, TEST, and XOR) have special one-byte opcodes for operations between the accumulator and a constant.
+		- Specialized operations, such as `multiplication`, `division`, `sign extension`, and `BCD correction` can only occur in the accumulator.
+		- In your code, **try to perform as much work in the accumulator as possible**. As you will see, the remaining seven general-purpose registers exist primarily to support the calculation occurring in the accumulator.
+
+	- `EDX: The Data Register`
+		- EDX, is most closely tied to the accumulator. Instructions that deal with over sized data items, such as `multiplication`, `division`, `CWD`, and `CDQ`, store the most significant bits in the data register and the least significant bits in the accumulator.
+		- The data register also plays a part in `IO instructions`. In this case, the accumulator holds the data to read or write from the port, and the data register holds the port address.
+		- In your code, the data register is most useful for **storing data related to the accumulator's calculation**.
+
+	- `ECX: The Count Register`
+		- ECX, is the x86 equivalent of the ubiquitous variable `i`. **Every counting-related instruction in the x86 uses ECX.**
+		- The most obvious counting instructions are `LOOP`, `LOOPZ`, and `LOOPNZ`. Another counter-based instruction is `JCXZ`, which, as the name implies, jumps when the counter is 0.
+		- The count register also appears in some `bit-shift` operations, where it holds the number of shifts to perform.
+		- Finally, the count register controls the string instructions through the `REP`, `REPE`, and `REPNE` prefixes. In this case, the count register determines the maximum number of times the operation will repeat.
+		- The only problem is that **this register counts downward** instead of up as in high level languages.
+
+	- `EDI: The Destination Index`
+		- Every loop that generates data must store the result in memory, and doing so requires a moving pointer. The destination index, EDI, is that pointer.
+		- **The destination index holds the implied write address of all string operations.**
+		- Many coders treat the destination index as no more than extra storage space. This is a mistake. Use the stack or some other register for storage, and **use EDI as your global write pointer**.
+
+	- `ESI: The Source Index`
+		- ESI has the same properties as the destination index. The only difference is that **the source index is for reading instead of writing**. Although all data-processing routines write, not all read, so the source index is not as universally useful.
+
+		- In situations where your code does not read any sort of data, using the source index for convenient storage space is acceptable.
+
+	- `ESP and EBP: The Stack Pointer and the Base Pointer`
+		- These two registers are the heart of the x86 function-call mechanism. When a block of code calls a function, it pushes the parameters and the return address on the stack.
+		- Once inside, function sets the base pointer equal to the stack pointer and then places its own internal variables on the stack. From that point on, the function refers to its parameters and variables relative to the base pointer rather than the stack pointer.
+		- **In your code, there is never a reason to use the stack pointer for anything other than the stack.** The base pointer, however, is up for grabs. If your routines pass parameters by register instead of by stack (they should), there is no reason to copy the stack pointer into the base pointer. The base pointer becomes a free register for whatever you need.
+
+	- `EBX: The Base Register`
+		- Of all the general-purpose registers, EBX is the only register without an important dedicated purpose. It is a good place to store an extra pointer or calculation step, but not much more.
+
 
 ### Instruction pointer
 
@@ -430,6 +471,6 @@ Testing 123...
 - [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 - [What is stack frame in assembly?](https://stackoverflow.com/questions/3699283/what-is-stack-frame-in-assembly)
 - [Use of EAX register in system calls](https://stackoverflow.com/questions/47692516/what-is-the-use-of-eax-register-in-the-context-of-system-calls-in-linux)
-- []()
+- [The Art of Picking Intel Registers](https://www.swansontec.com/sregisters.html)
 - []()
 - []()
