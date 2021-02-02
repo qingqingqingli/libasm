@@ -3,13 +3,14 @@
 - [Intro to assembly language]()
 - [NASM (Netwide Assembler)]()
 - [Compilation stages]()
+- [80x86 instructions]()
 - [X86 architecture]()
+- [Operands]()
 - [Registers]()
 - [Instruction pointer]()
 - [Memory access and stack operation]()
 - [Functions]()
-- []()
-- []()
+- [Handle return value]()
 - [Resources]()
 
 ### Intro to assembly language
