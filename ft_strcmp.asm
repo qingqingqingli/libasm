@@ -23,29 +23,10 @@ ft_strcmp:
 	mov		rax, 0
 	mov		rcx, 0
 
-; _cmp_rdi:
-; 	cmp		byte[rdi + rcx], 0
-; 	jne		_cmp_rsi
-
-; _cmp_rsi:
-; 	cmp		byte[rsi + rcx], 0
-; 	jne		_difference
-
-; _difference:
-; 	mov		rax, [rdi + rcx]
-; 	sub		rax, [rsi + rcx]
-; 	inc		rcx
-; 	call	_cmp_rdi
-
-_negate:
-	neg		rax
-
-
 _return:
 	mov		al, byte[rdi + rcx]
 	sub		al, byte[rsi + rcx]
-	cmp 	al, 0
-	js		_negate
+
 	ret
 
 
