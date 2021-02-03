@@ -484,6 +484,36 @@ mov rdx,1    ; ... and the third arg. is stored in rdx
 syscall
 ```
 
+### Calling an asm function from C [source](https://banisterfiend.wordpress.com/2008/08/15/calling-an-asm-function-from-c/)
+
+- When we call our function from C, the C compiler will push the parameters onto the stack, and our asm program must look there to fetch them.
+
+- When we invoke our function the C compiler does the following:
+
+(1) **Pushes all the parameters for the function onto the stack**, in reverse order to their order in the function prototype. Why reverse order? So that the first parameter popped off the stack matches the first (left-most) parameter declared in the C function prototype.
+
+(2) **Pushes the return address for the function onto the stack**. The return address is the address of the next instruction in the calling function, it is where execution takes off once the asm function has completed.
+
+Inside our asm function the following should also be performed on entry: (the function prologue)
+
+(1) The ebp (base pointer/frame pointer) register is pushed onto the stack.
+(2) The esp (stack pointer) register is saved to the ebp register.
+
+The stack-related operations therefore are the pushing of parameters, the pushing of the return address and the pushing of the base pointer.
+
+After these operations the stack will look like this:
+
+------top of stack------
+*old ebp
+*return_address
+*parameter 1
+*parameter 2
+.....
+*parameter N
+.....
+-------------------------
+
+
 ### Resources
 - [Intro to x86 Assembly Language](https://www.youtube.com/watch?v=wLXIWKUWpSs&list=PLmxT2pVYo5LB5EzTPZGfFN0c2GDiSXgQe)
 - [X86 assembly wikibook](https://en.wikibooks.org/wiki/X86_Assembly)

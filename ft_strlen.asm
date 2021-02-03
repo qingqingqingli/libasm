@@ -1,17 +1,26 @@
-section 	.text
-global		ft_strlen		; entry point for the program
+; rdi -> string
+; rax -> return value
+; current char -> byte[rdi + rax]
+
+section		.text
+global		ft_strlen
 
 ft_strlen:
-			mov		rcx, -1
-			mov 	rsi, rdi		; back up rdi
-			mov 	rax, 0			; look for \0
-			repne	scasb			; do the search
-			sub 	rdi, rsi		; save the srting length
-			dec 	rdi				; decrement one for \0
-			mov		rax, rdi		; save the return value
-			ret
 
-; -> produce a .o file, which needs to be linked to become an executable
+	mov rax, 0					; initialise the rax (return value) to 0
 
-; nasm -f elf64 -o hello.o hello.asm
-; ld hello.o -o hello
+	cmp byte[rdi + rax], 0		; compare the 0 index char
+	je _return					; return if it is an empty string
+
+_loop:
+	inc rax						; otherwise, it will come into the loop
+	cmp byte[rdi + rax], 0		; compare the current index char
+	jne _loop					; return to the loop if not 0
+
+_return:
+	ret							; when the loop reaches 0 and ends
+								; come to this line and return rax
+
+
+; nasm -felf64 ft_strlen.asm && gcc main.c ft_strlen.o && ./a.out
+; rm *.o *.out
