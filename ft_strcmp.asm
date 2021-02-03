@@ -14,8 +14,6 @@
 ; rax -> return value
 ; -------------------------------------------
 
-; nasm -felf64 ft_strcmp.asm && gcc main.c ft_strcmp.o && ./a.out
-
 section		.text
 global		ft_strcmp
 
@@ -23,11 +21,13 @@ ft_strcmp:
 	mov		rax, 0
 	mov		rcx, 0
 
-_return:
+_loop:
 	mov		al, byte[rdi + rcx]
 	mov		cl, byte[rsi + rcx]
 	cmp		al, cl
 	jne		_subtract
+	inc		rcx
+	jmp		_loop
 
 _subtract:
 	sub 	rax, rcx

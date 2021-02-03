@@ -52,8 +52,8 @@ void	strcmp_test()
 {
 	// printf("--------------ft_strcmp---------------\n");
 
-	char *str1 = "123456789";
-	char *str2 = "asdfasdfasdfasdf";
+	char *str1 = "666123456789";
+	char *str2 = "666asdfasdfasdfasdf";
 	char *str3 = "";
 	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
 	char *str5 = NULL;
