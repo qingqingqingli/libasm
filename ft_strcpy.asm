@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:44:07 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/03 17:44:09 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/03 19:01:32 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -39,4 +39,5 @@ _loop:
 	cmp		al, 0					; check if it's the end
 	jne		_loop					; start the loop again when it's not the end
 
+	mov		rax, rdi
 	ret								; return after it reaches the end

@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:43:33 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/03 17:43:56 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/03 19:16:41 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -41,7 +41,3 @@ _loop:
 _return:
 	ret							; when the loop reaches 0 and ends
 								; come to this line and return rax
-
-
-; nasm -felf64 ft_strlen.asm && gcc main.c ft_strlen.o && ./a.out
-; rm *.o *.out

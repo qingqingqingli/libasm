@@ -25,8 +25,10 @@ ft_strcmp:
 
 _return:
 	mov		al, byte[rdi + rcx]
-	sub		al, byte[rsi + rcx]
+	mov		cl, byte[rsi + rcx]
+	cmp		al, cl
+	jne		_subtract
 
+_subtract:
+	sub 	rax, rcx
 	ret
-
-
