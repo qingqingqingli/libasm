@@ -5,8 +5,6 @@
 ; - The strcmp() function compares the two strings s1 and s2. It returns an
 ;   integer less than, equal to, or greater than zero if s1 is found, respectively,
 ;   to be less than, to match, or be greater than s2.
-; - The strcmp() function return an integer less than, equal to, or greater than
-;   zero if s1 is found, respectively, to be less than, to match, or be greater than s2.
 
 ; [Registers]
 ; rdi -> char *s1
@@ -19,16 +17,20 @@ global		ft_strcmp
 
 ft_strcmp:
 	mov		rax, 0
-	mov		rcx, 0
+	mov		rdx, 0
+	mov		rcx, -1
 
-_loop:
-	mov		al, byte[rdi + rcx]
-	mov		cl, byte[rsi + rcx]
-	cmp		al, cl
-	jne		_subtract
+_check:
 	inc		rcx
-	jmp		_loop
+	mov		al, byte[rdi + rcx]
+	mov		dl, byte[rsi + rcx]
+	cmp		al, 0
+	je		_return
+	cmp		dl, 0
+	je		_return
+	cmp		al, dl
+	je		_check
 
-_subtract:
-	sub 	rax, rcx
+_return:
+	sub		rax, rdx
 	ret

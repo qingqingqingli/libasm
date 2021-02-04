@@ -52,8 +52,8 @@ void	strcmp_test()
 {
 	// printf("--------------ft_strcmp---------------\n");
 
-	char *str1 = "666123456789";
-	char *str2 = "666asdfasdfasdfasdf";
+	char *str1 = "6666123456789";
+	char *str2 = "6666asdfasdfasdfasdf";
 	char *str3 = "";
 	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
 	char *str5 = NULL;
@@ -68,8 +68,7 @@ void	strcmp_test()
 	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str2, str2), ft_strcmp(str2, str2));
 	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str3, str3), ft_strcmp(str3, str3));
 	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str4, str4), ft_strcmp(str4, str4));
-
-	// printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str5, str4), ft_strcmp(str5, str4));
+	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str5, str4), ft_strcmp(str5, str4));
 }
 
 int 	main(void)
