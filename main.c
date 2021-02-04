@@ -23,7 +23,7 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 // void	strlen_test()
 // {
 
-// 	// printf("--------------ft_strlen---------------\n");
+// 	printf("--------------ft_strlen---------------\n");
 
 // 	char *str1 = "123456789";
 // 	char *str2 = "asdfasdfasdfasdf";
@@ -84,45 +84,12 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 // 	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str5, str4), ft_strcmp(str5, str4));
 // }
 
-// void	read_test(char **argv)
-
-// {	int		fd_one = 0;
-// 	int		fd_two = 0;
-// 	int		fd_three = 0;
-// 	int		fd_four = 0;
-// 	int		fd_five = 0;
-// 	char	*buf_one = malloc(sizeof(char) * 50);
-// 	char	*buf_two = malloc(sizeof(char) * 50);
-// 	int		n;
-// 	int		error;
-
-// 	fd_one = open(argv[1], O_RDONLY);
-// 	fd_two = open(argv[2], O_RDONLY);
-// 	fd_three = open(argv[3], O_RDONLY);
-// 	fd_four = open(argv[1], O_RDONLY);
-// 	fd_five = open(argv[2], O_RDONLY);
-// 	n = 100;
-// 	printf("Test 1 -  read %zd\n", read(fd_one, buf_one, n));
-// 	printf("buffer    read = %s", buf_one);
-// 	// printf("Test 1 - ft_read %d\n", ft_read(fd_two, buf_two, n));
-// 	// printf("buffer ft_read = %s", buf_two);
-// 	printf("\n\n");
-// 	printf("Test 2 -    read %zd\n", read(fd_three, buf_one, n));
-// 	// // printf("Test 2 - ft_read %d\n", ft_read(fd_three, buf_two, n));
-// 	error = errno;
-// 	printf("errno - %d - %s\n\n", error, strerror(error));
-// 	printf("Test 3 -  read %zd\n", read(fd_four, 0, n));
-// 	// // printf("Test 3 - ft_read %d\n", ft_read(fd_five, 0, n));
-// 	error = errno;
-// 	printf("errno - %d - %s\n", error, strerror(error));
-// }
-
 void 	read_test(void)
 {
 	printf("--------------ft_read---------------\n\n");
 
-	char *file1 = "";
-	char *file2 = "main.c";
+	char *file1 = "main.c";
+	char *file2 = "";
 	char *buf1 = malloc(sizeof(char) * 50);
 	char *buf2 = malloc(sizeof(char) * 50);
 	int fd1 = open(file1, O_RDONLY);
@@ -136,7 +103,6 @@ void 	read_test(void)
 	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, buf1, 40));
 	printf("copy read \t\t [%s]\n", buf1);
 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	close(fd1);
 	printf("\n");
 
 	errno = 0;
@@ -148,14 +114,22 @@ void 	read_test(void)
 	printf("copy read \t\t [%s]\n", buf2);
 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
 	close(fd2);
+	printf("\n");
+
+	errno = 0;
+	printf(Blue "original return value \t [%zd]\n", read(fd1, 0, 40));
+	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	errno = 0;
+	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, 0, 40));
+	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	close(fd1);
+	printf("\n");
 
 	errno = 0;
 	printf(Blue "original return value \t [%zd]\n", read(0, buf1, 40));
-	printf("original read \t\t [%s]\n", buf1);
 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
 	errno = 0;
 	printf(Purple "copy return value \t [%zd]\n", ft_read(0, buf1, 40));
-	printf("copy read \t\t [%s]\n", buf1);
 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
 	printf("\n");
 
@@ -163,12 +137,31 @@ void 	read_test(void)
 	free(buf2);
 }
 
+// void	write_test()
+// {
+// 	char *buf = "Test sentence to write\n";
+// 	int fd = 1;
+// 	int n = strlen(buf);
+// 	printf("Original return value \t [%zd]\n", write(fd, buf, n));
+// 	// printf("Copy return value \t [%zd]\n", ft_write(fd, buf, n));
+// 	errno = 0;
+// 	printf("Original return value \t [%zd]\n", write(fd, 0, n));
+// 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	// printf("Copy return value \t [%zd]\n", ft_write(fd, 0, n));
+// 	// printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	errno = 0;
+// 	printf("Original return value \t [%zd]\n", write(-1, 0, n));
+// 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// }
+
+
 int 	main(void)
 {
 	// strlen_test();
 	// strcpy_test();
 	// strcmp_test();
 	read_test();
+	// write_test();
 	return 0;
 }
 
