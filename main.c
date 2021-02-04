@@ -168,57 +168,16 @@ char *ft_strdup(const char *s);
 // 	printf("\n");
 // }
 
-void	strdup_test()
+void	ft_strdup_test(void)
 {
-	printf("--------------ft_strdup---------------\n\n");
-
-	char *str1 = "123456789";
-	char *str2 = "asdfasdfasdfasdf";
-	char *str3 = "";
-	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
-	char *str5 = NULL;
-
-	char *dest1 = ft_strdup(str1);
-	char *dest2 = ft_strdup(str2);
-	char *dest3 = ft_strdup(str3);
-	char *dest4 = ft_strdup(str4);
-	char *dest5 = ft_strdup(str5);
-
-	// errno = 0;
-	// printf(Blue "Original return \t [%s]\n", strdup(str1));
-	// printf("Original errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Yellow "Copy return \t\t [%s]\n", dest1);
-	printf("Copy errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	printf("\n");
-	// errno = 0;
-	// printf(Blue "Original return \t [%s]\n", strdup(str2));
-	// printf("Original errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Yellow "Copy return \t\t [%s]\n", dest2);
-	printf("Copy errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	printf("\n");
-	// errno = 0;
-	// printf(Blue "Original return \t [%s]\n", strdup(str3));
-	// printf("Original errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Yellow "Copy return \t\t [%s]\n", dest3);
-	printf("Copy errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	printf("\n");
-	// errno = 0;
-	// printf(Blue "Original return \t [%s]\n", strdup(str4));
-	// printf("Original errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Yellow "Copy return \t\t [%s]\n", dest4);
-	printf("Copy errno \t [%d] \t [%s]\n", errno, strerror(errno));
-	// printf("Original return \t [%s]\n", strdup(str5)); // seg fault
-	printf("Copy return \t [%s]\n", dest5); // seg fault
-
-	// free(dest1);
-	// free(dest2);
-	// free(dest3);
-	// free(dest4);
-
+	printf(Blue "strdup \t\t [%s]\n", strdup("test1"));
+	printf(Yellow "ft_strdup \t [%s]\n", ft_strdup("test1"));
+	printf("\n\n");
+	printf(Blue "strdup \t\t [%s]\n", strdup("test2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatie"));
+	printf(Yellow "ft_strdup \t [%s]\n", ft_strdup("test2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatietest2 met spatie"));
+	printf("\n\n");
+	printf(Blue "strdup \t\t [%s]\n", strdup(""));
+	printf(Yellow "ft_strdup \t [%s]\n", ft_strdup(""));
 }
 
 int 	main(void)
@@ -228,7 +187,7 @@ int 	main(void)
 	// strcmp_test();
 	// read_test();
 	// write_test();
-	strdup_test();
+	ft_strdup_test();
 	return 0;
 }
 

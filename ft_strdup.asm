@@ -14,43 +14,37 @@
 ; rax -> return value
 ; -------------------------------------------
 
-section		.text
-global		ft_strdup
 extern 		__errno_location
 extern		malloc
 extern		ft_strlen
 extern		ft_strcpy
 
+section		.text
+global		ft_strdup
 
 ft_strdup:
-	mov		r8, rdi			; save the src string
+	push	rdi				; save rdi on the stack
 
 _calculate_len:
 	call	ft_strlen		; calculate the length
-	; mov		rax, r8
-	; ret
 	mov		rcx, rax		; len is saved in rax -> rcx
 	inc		rcx				; add one space for \0
 
 _malloc_dest:
 	mov		rdi, rcx		; save the required len in rdi
-	call	malloc
-	cmp		rax, 0			; if the result is null
-	je		_error
+	call	malloc			; call malloc
+	cmp		rax, 0			; check if malloc fails
+	je		_error			; go to the error routine if it fails
 
 _copy_string:
 	mov		rdi, rax
-	mov		rsi, r8
+	pop		rsi
 	call	ft_strcpy
+	ret
 
 _error:
-	neg		rax
 	mov		rdx, rax
 	call	__errno_location
 	mov		[rax], rdx
 	mov		rax, -1
 	ret
-
-_return:
-	ret
-

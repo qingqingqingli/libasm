@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:43:33 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/03 19:16:41 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/04 16:49:54 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -28,10 +28,7 @@ global		ft_strlen
 
 ft_strlen:
 
-	mov rax, 0					; initialise the rax (return value) to 0
-
-	cmp byte[rdi + rax], 0		; compare the 0 index char
-	je _return					; return if it is an empty string
+	mov rax, -1					; initialise the rax (return value) to -1
 
 _loop:
 	inc rax						; otherwise, it will come into the loop
