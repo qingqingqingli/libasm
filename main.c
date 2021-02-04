@@ -19,6 +19,7 @@ size_t ft_strlen(const char *s);
 char *ft_strcpy(char *dest, const char *src);
 int ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_read(int fd, void *buf, size_t count);
+ssize_t ft_write(int fd, const void *buf, size_t count);
 
 // void	strlen_test()
 // {
@@ -84,75 +85,86 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 // 	printf("original is \t [%d] \t custom is \t [%d]\n", strcmp(str5, str4), ft_strcmp(str5, str4));
 // }
 
-void 	read_test(void)
-{
-	printf("--------------ft_read---------------\n\n");
-
-	char *file1 = "main.c";
-	char *file2 = "";
-	char *buf1 = malloc(sizeof(char) * 50);
-	char *buf2 = malloc(sizeof(char) * 50);
-	int fd1 = open(file1, O_RDONLY);
-	int	fd2 = open(file2, O_RDONLY);
-
-	errno = 0;
-	printf(Blue "original return value \t [%zd]\n", read(fd1, buf1, 40));
-	printf("original read \t\t [%s]\n", buf1);
-	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, buf1, 40));
-	printf("copy read \t\t [%s]\n", buf1);
-	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	printf("\n");
-
-	errno = 0;
-	printf(Blue "original return value \t [%zd]\n", read(fd2, buf2, 40));
-	printf("original read \t\t [%s]\n", buf2);
-	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Purple "copy return value \t [%zd]\n", ft_read(fd2, buf2, 40));
-	printf("copy read \t\t [%s]\n", buf2);
-	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	close(fd2);
-	printf("\n");
-
-	errno = 0;
-	printf(Blue "original return value \t [%zd]\n", read(fd1, 0, 40));
-	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, 0, 40));
-	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	close(fd1);
-	printf("\n");
-
-	errno = 0;
-	printf(Blue "original return value \t [%zd]\n", read(0, buf1, 40));
-	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	errno = 0;
-	printf(Purple "copy return value \t [%zd]\n", ft_read(0, buf1, 40));
-	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	printf("\n");
-
-	free(buf1);
-	free(buf2);
-}
-
-// void	write_test()
+// void 	read_test(void)
 // {
-// 	char *buf = "Test sentence to write\n";
-// 	int fd = 1;
-// 	int n = strlen(buf);
-// 	printf("Original return value \t [%zd]\n", write(fd, buf, n));
-// 	// printf("Copy return value \t [%zd]\n", ft_write(fd, buf, n));
+// 	printf("--------------ft_read---------------\n\n");
+
+// 	char *file1 = "main.c";
+// 	char *file2 = "";
+// 	char *buf1 = malloc(sizeof(char) * 50);
+// 	char *buf2 = malloc(sizeof(char) * 50);
+// 	int fd1 = open(file1, O_RDONLY);
+// 	int	fd2 = open(file2, O_RDONLY);
+
 // 	errno = 0;
-// 	printf("Original return value \t [%zd]\n", write(fd, 0, n));
+// 	printf(Blue "original return value \t [%zd]\n", read(fd1, buf1, 40));
+// 	printf("original read \t\t [%s]\n", buf1);
 // 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-// 	// printf("Copy return value \t [%zd]\n", ft_write(fd, 0, n));
-// 	// printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
 // 	errno = 0;
-// 	printf("Original return value \t [%zd]\n", write(-1, 0, n));
+// 	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, buf1, 40));
+// 	printf("copy read \t\t [%s]\n", buf1);
+// 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	printf("\n");
+
+// 	errno = 0;
+// 	printf(Blue "original return value \t [%zd]\n", read(fd2, buf2, 40));
+// 	printf("original read \t\t [%s]\n", buf2);
 // 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	errno = 0;
+// 	printf(Purple "copy return value \t [%zd]\n", ft_read(fd2, buf2, 40));
+// 	printf("copy read \t\t [%s]\n", buf2);
+// 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	close(fd2);
+// 	printf("\n");
+
+// 	errno = 0;
+// 	printf(Blue "original return value \t [%zd]\n", read(fd1, 0, 40));
+// 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	errno = 0;
+// 	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, 0, 40));
+// 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	close(fd1);
+// 	printf("\n");
+
+// 	errno = 0;
+// 	printf(Blue "original return value \t [%zd]\n", read(0, buf1, 40));
+// 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	errno = 0;
+// 	printf(Purple "copy return value \t [%zd]\n", ft_read(0, buf1, 40));
+// 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+// 	printf("\n");
+
+// 	free(buf1);
+// 	free(buf2);
 // }
+
+void	write_test()
+{
+	printf("--------------ft_write---------------\n\n");
+	char *buf = "TEST SENTENCE TO TEST WRITE.\n";
+	int fd = 1;
+	int n = strlen(buf);
+	errno = 0;
+	printf("Original return value \t [%zd]\n", write(fd, buf, n));
+	printf("Copy return value \t [%zd]\n", ft_write(fd, buf, n));
+	printf("\n");
+	errno = 0;
+	printf(Blue "Original return value \t [%zd]\n", write(fd, 0, n));
+	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	printf("\n");
+	errno = 0;
+	printf(Yellow "Copy return value \t [%zd]\n", ft_write(fd, 0, n));
+	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	printf("\n");
+	errno = 0;
+	printf(Blue "Original return value \t [%zd]\n", write(-1, 0, n));
+	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	printf("\n");
+	errno = 0;
+	printf(Yellow "Copy return value \t [%zd]\n", ft_write(-1, 0, n));
+	printf("Copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	printf("\n");
+}
 
 
 int 	main(void)
@@ -160,8 +172,8 @@ int 	main(void)
 	// strlen_test();
 	// strcpy_test();
 	// strcmp_test();
-	read_test();
-	// write_test();
+	// read_test();
+	write_test();
 	return 0;
 }
 
@@ -169,4 +181,5 @@ int 	main(void)
 // nasm -felf64 ft_strcpy.asm && gcc main.c ft_strcpy.o && ./a.out
 // nasm -felf64 ft_strcmp.asm && gcc main.c ft_strcmp.o && ./a.out
 // nasm -felf64 ft_read.asm && gcc -no-pie main.c ft_read.o && ./a.out
+// nasm -felf64 ft_write.asm && gcc -no-pie main.c ft_write.o && ./a.out
 // rm *.o *.out
