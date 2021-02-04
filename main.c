@@ -149,6 +149,16 @@ void 	read_test(void)
 	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
 	close(fd2);
 
+	errno = 0;
+	printf(Blue "original return value \t [%zd]\n", read(0, buf1, 40));
+	printf("original read \t\t [%s]\n", buf1);
+	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	errno = 0;
+	printf(Purple "copy return value \t [%zd]\n", ft_read(0, buf1, 40));
+	printf("copy read \t\t [%s]\n", buf1);
+	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	printf("\n");
+
 	free(buf1);
 	free(buf2);
 }
