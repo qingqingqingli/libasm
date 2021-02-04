@@ -5,6 +5,14 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define Black "\033[0;30m"
+#define Red "\033[0;31m"
+#define Green "\033[0;32m"
+#define Yellow "\033[0;33m"
+#define Blue "\033[0;34m"
+#define Purple "\033[0;35m"
+#define Cyan "\033[0;36m"
+
 extern int errno;
 
 size_t ft_strlen(const char *s);
@@ -111,19 +119,35 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 
 void 	read_test(void)
 {
-	printf("--------------ft_read---------------\n");
+	printf("--------------ft_read---------------\n\n");
 
 	char *file1 = "";
-	char *file2 = "wiki.md";
+	char *file2 = "main.c";
 	char *buf1 = malloc(sizeof(char) * 50);
 	char *buf2 = malloc(sizeof(char) * 50);
-
 	int fd1 = open(file1, O_RDONLY);
 	int	fd2 = open(file2, O_RDONLY);
+
 	errno = 0;
-	printf("original return value \t [%zd]\n", ft_read(fd1, buf1, 40));
+	printf(Blue "original return value \t [%zd]\n", read(fd1, buf1, 40));
 	printf("original read \t\t [%s]\n", buf1);
 	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	errno = 0;
+	printf(Purple "copy return value \t [%zd]\n", ft_read(fd1, buf1, 40));
+	printf("copy read \t\t [%s]\n", buf1);
+	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	close(fd1);
+	printf("\n");
+
+	errno = 0;
+	printf(Blue "original return value \t [%zd]\n", read(fd2, buf2, 40));
+	printf("original read \t\t [%s]\n", buf2);
+	printf("original errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	errno = 0;
+	printf(Purple "copy return value \t [%zd]\n", ft_read(fd2, buf2, 40));
+	printf("copy read \t\t [%s]\n", buf2);
+	printf("copy errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
+	close(fd2);
 
 	free(buf1);
 	free(buf2);
