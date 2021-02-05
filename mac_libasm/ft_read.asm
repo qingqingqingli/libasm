@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 15:15:46 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:18:03 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -35,6 +35,7 @@ _ft_read:
 	mov		rax, 0x02000003		; syscall id for read
 	syscall
 	jc		_set_error			; jump if carry flag is set
+	ret
 
 _set_error:
 	push	rax					; save code to rdx to store
