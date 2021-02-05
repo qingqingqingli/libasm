@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 15:05:59 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:06:33 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -37,7 +37,6 @@ _ft_read:
 	jc		_set_error			; jump if carry flag is set
 
 _set_error:
-	neg		rax					; negate negative rax to positive
 	mov		rdx, rax			; save code to rdx to store
 	call	___error			; call errno
 	mov		[rax], rdx			; save error code to rax
