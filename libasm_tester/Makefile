@@ -6,11 +6,11 @@
 #    By: cacharle <marvin@42.fr>                      +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/08 03:06:59 by cacharle      #+#    #+#                  #
-#    Updated: 2021/02/05 11:43:42 by qli           ########   odam.nl          #
+#    Updated: 2021/02/05 14:36:03 by qli           ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-LIBASM_PATH = ../libasm
+LIBASM_PATH = ../mac_libasm
 
 RM = rm -fv
 MAKE = make --no-print-directory
