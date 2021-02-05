@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:43 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 15:02:39 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:04:32 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -34,15 +34,12 @@ global		_ft_write
 _ft_write:
 	mov		rax, 0x02000004		; syscall id for write
 	syscall
-	test	rax, rax			; set condition codes
-	js		_set__error				; jump if negative (meaning an error occured)
+	jc		_set__error			; jump if carry flag is set
 	ret
 
 _set__error:
 	mov		rdx, rax			; save code to rdx to store
-	push	rdx
 	call	___error			; call errno
-	pop		rdx
 	mov		[rax], rdx			; save error code to rax
 	mov		rax, -1				; set rax to -1 as return value
 	ret
