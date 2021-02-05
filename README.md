@@ -20,7 +20,9 @@
 
 - `Errors` during syscalls need to be checked and `Errno` to be set properly
 
-- Check my learnings on assembly on this [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
+## wiki
+
+- You can check my learnings on assembly on this [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
 
 ## How to test
 
