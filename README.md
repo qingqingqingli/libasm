@@ -42,6 +42,6 @@ $ cd libasm/mac_libasm
 $ make && gcc main.c libasm && ./a.out
 ```
 
-## Test results example
+## Test result example
 
 [![Logo](https://github.com/qingqingqingli/readme_images/blob/master/libasm_1.png)](https://github.com/qingqingqingli/libasm)
