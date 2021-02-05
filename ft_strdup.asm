@@ -37,14 +37,13 @@ _malloc_dest:
 	je		_error			; go to the error routine if it fails
 
 _copy_string:
-	mov		rdi, rax
-	pop		rsi
-	call	ft_strcpy
-	ret
+	mov		rdi, rax		; save the malloced string to rdi
+	pop		rsi				; save the original rdi into rsi
+	call	ft_strcpy		; call strcpy & result is saved in rax
+	ret						; return dst in rax
 
 _error:
-	mov		rdx, rax
-	call	__errno_location
-	mov		[rax], rdx
-	mov		rax, -1
+	call	__errno_location	; call the function
+	mov		[rax], 12		; 12 stands for ENOMEM
+	mov		rax, 0
 	ret
