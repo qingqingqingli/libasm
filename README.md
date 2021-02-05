@@ -26,13 +26,13 @@
 
 ## How to test
 
-**Disclaimer: This repo provides two versions (Linux & MacOS), due to differences between these two operation systems.**
+**Disclaimer: This repo provides two versions (Linux & MacOS), due to differences between these two operation systems. Choose the version to test based on your OS.**
 
 > Run the following commands to test:
 
 ```shell
 $ cd Desktop && git clone https://github.com/qingqingqingli/libasm.git
-$ cd libasm
+$ cd libasm/linux_libasm
 $ make
 $ gcc -no-pie main.c libasm
 $ ./a.out
