@@ -43,7 +43,7 @@ _copy_string:
 	ret						; return dst in rax
 
 _error:
-	call	__errno_location	; call the
-	; mov		[rax], byte[12]		; 12 stands for ENOMEM
-	mov		rax, 0
+	call	__errno_location	; call the errno function
+	mov		rdx, 12				; 12 stands for ENOMEM
+	mov		[rax], rdx
 	ret
