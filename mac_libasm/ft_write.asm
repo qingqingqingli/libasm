@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:43 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:46:32 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:52:44 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -29,9 +29,9 @@
 extern 		___error			; include external error
 
 section		.text
-global		ft_write
+global		_ft_write
 
-ft_write:
+_ft_write:
 	mov		rax, 0x02000004		; syscall id for write
 	syscall
 	test	rax, rax			; set condition codes

@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:43:33 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 12:48:29 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:52:46 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -24,9 +24,9 @@
 ; -------------------------------------------
 
 section		.text
-global		ft_strlen
+global		_ft_strlen
 
-ft_strlen:
+_ft_strlen:
 
 	mov rax, -1					; initialise the rax to -1
 

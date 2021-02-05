@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:46:06 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:52:12 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -29,9 +29,9 @@
 extern 		___error			; include external error
 
 section		.text
-global		ft_read
+global		_ft_read
 
-ft_read:
+_ft_read:
 	mov		rax, 0x02000003		; syscall id for read
 	syscall
 	test	rax, rax			; set condition codes

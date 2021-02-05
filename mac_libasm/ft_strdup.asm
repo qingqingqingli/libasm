@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:47:06 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:52:03 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -28,13 +28,13 @@
 
 extern 		___error
 extern		malloc
-extern		ft_strlen
-extern		ft_strcpy
+extern		_ft_strlen
+extern		_ft_strcpy
 
 section		.text
-global		ft_strdup
+global		_ft_strdup
 
-ft_strdup:
+_ft_strdup:
 	push	rdi				; save rdi on the stack
 
 _calculate_len:

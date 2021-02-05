@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:44:07 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 12:45:03 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:52:25 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -26,9 +26,9 @@
 ; -------------------------------------------
 
 section		.text
-global		ft_strcpy
+global		_ft_strcpy
 
-ft_strcpy:
+_ft_strcpy:
 	mov		rax, 0					; initialise rax to 0
 	mov 	rcx, 0					; initialise counter to 0
 
