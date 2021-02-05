@@ -18,4 +18,4 @@
 	- `ft_read`: read from a file descriptor
 	- `ft_strdup`: duplicate a string
 
-- `Errors` during syscalls need to be checked and set properly
+- `Errors` during syscalls need to be checked and `Errno` to be set properly
