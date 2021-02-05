@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 15:18:03 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:20:12 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -38,9 +38,9 @@ _ft_read:
 	ret
 
 _set_error:
-	push	rax					; save code to rdx to store
+	push	rax					; save rax on the stack
 	call	___error			; call errno
-	pop		rdx
+	pop		rdx					; save rax value into rdx
 	mov		[rax], rdx			; save error code to rax
 	mov		rax, -1				; set rax to -1 as return value
 	ret
