@@ -22,4 +22,4 @@
 
 ## wiki
 
-- You can check my learnings on assembly on the [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
+- You can check my learnings on assembly on this [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
