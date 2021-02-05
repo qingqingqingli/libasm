@@ -23,3 +23,20 @@
 ## wiki
 
 - You can check my learnings on assembly on this [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
+
+## How to test
+
+**Disclaimer: This repo provides two versions (Linux & MacOS), due to differences between these two operation systems.**
+
+> Run the following commands to test:
+
+```shell
+$ cd Desktop && git clone https://github.com/qingqingqingli/libasm.git
+$ cd libasm
+$ make
+$ gcc -no-pie main.c libasm
+$ ./a.out
+```
+
+## Test results example
+
