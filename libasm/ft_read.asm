@@ -14,16 +14,16 @@
 ; rax -> return value
 ; -------------------------------------------
 
-extern 		__errno_location
+extern 		__errno_location	; include external errno
 
 section		.text
 global		ft_read
 
 ft_read:
-	mov		rax, 0
+	mov		rax, 0				; 0 is the syscall id for read
 	syscall
-	test	rax, rax
-	js		_error
+	test	rax, rax			; set condition codes
+	js		_error				; jump if negative (meaning an error occured)
 	ret
 
 _error:

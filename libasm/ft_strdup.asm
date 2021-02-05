@@ -43,7 +43,9 @@ _copy_string:
 	ret						; return dst in rax
 
 _error:
+	pop		rdi
 	call	__errno_location	; call the errno function
 	mov		rdx, 12				; 12 stands for ENOMEM
 	mov		[rax], rdx
+	mov		rax, 0
 	ret
