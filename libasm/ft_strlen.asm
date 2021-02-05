@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:43:33 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/04 16:49:54 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 12:48:29 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -28,13 +28,12 @@ global		ft_strlen
 
 ft_strlen:
 
-	mov rax, -1					; initialise the rax (return value) to -1
+	mov rax, -1					; initialise the rax to -1
 
 _loop:
-	inc rax						; otherwise, it will come into the loop
-	cmp byte[rdi + rax], 0		; compare the current index char
-	jne _loop					; return to the loop if not 0
+	inc rax						; increment rax to 0
+	cmp byte[rdi + rax], 0		; compare the current src char to 0
+	jne _loop					; start the loop again if not the end
 
 _return:
-	ret							; when the loop reaches 0 and ends
-								; come to this line and return rax
+	ret							; return length in rax

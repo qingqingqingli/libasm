@@ -1,3 +1,15 @@
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         ::::::::             ;
+;    ft_read.asm                                        :+:    :+:             ;
+;                                                      +:+                     ;
+;    By: qli <qli@student.codam.nl>                   +#+                      ;
+;                                                    +#+                       ;
+;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
+;    Updated: 2021/02/05 12:42:08 by qli           ########   odam.nl          ;
+;                                                                              ;
+; **************************************************************************** ;
+
 ; -------------------------------------------
 ; [read]
 ; - read from a file descriptor
@@ -27,9 +39,9 @@ ft_read:
 	ret
 
 _error:
-	neg		rax
-	mov		rdx, rax
-	call	__errno_location
-	mov		[rax], rdx
-	mov		rax, -1
+	neg		rax					; negate negative rax to positive
+	mov		rdx, rax			; save code to rdx to store
+	call	__errno_location	; call errno
+	mov		[rax], rdx			; save error code to rax
+	mov		rax, -1				; set rax to -1 as return value
 	ret

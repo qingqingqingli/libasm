@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/03 17:44:07 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/03 19:01:32 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 12:45:03 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -34,10 +34,11 @@ ft_strcpy:
 
 _loop:
 	mov		al, byte[rsi + rcx]		; save src char into al
-	mov		[rdi + rcx], al			; save al into dest char
+	mov		[rdi + rcx], al			; save al into dest
 	inc		rcx						; increment counter
-	cmp		al, 0					; check if it's the end
-	jne		_loop					; start the loop again when it's not the end
+	cmp		al, 0					; check if it is \0
+	jne		_loop					; if not the end, start the loop again
 
-	mov		rax, rdi
-	ret								; return after it reaches the end
+_return:
+	mov		rax, rdi				; save dst into rax
+	ret								; a pointer to dst will be returned

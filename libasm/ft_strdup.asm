@@ -27,7 +27,7 @@ ft_strdup:
 
 _calculate_len:
 	call	ft_strlen		; calculate the length
-	mov		rcx, rax		; len is saved in rax -> rcx
+	mov		rcx, rax		; len is saved in rax and copied into rcx
 	inc		rcx				; add one space for \0
 
 _malloc_dest:
@@ -43,9 +43,9 @@ _copy_string:
 	ret						; return dst in rax
 
 _error:
-	pop		rdi
+	pop		rdi					; clean up stack if malloc fails
 	call	__errno_location	; call the errno function
 	mov		rdx, 12				; 12 stands for ENOMEM
-	mov		[rax], rdx
-	mov		rax, 0
-	ret
+	mov		[rax], rdx			; save errro code into rax
+	mov		rax, 0				; change rax to 0
+	ret							; NULL is returned when malloc fails

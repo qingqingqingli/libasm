@@ -20,16 +20,16 @@ section		.text
 global		ft_write
 
 ft_write:
-	mov		rax, 1
+	mov		rax, 1				; 1 is syscall id for write
 	syscall
-	test	rax, rax
-	js		_error
+	test	rax, rax			; set condition codes
+	js		_error				; jump if negative (meaning an error occured)
 	ret
 
 _error:
-	neg		rax
-	mov		rdx, rax
-	call	__errno_location
-	mov		[rax], rdx
-	mov		rax, -1
+	neg		rax					; negate negative rax to positive
+	mov		rdx, rax			; save code to rdx to store
+	call	__errno_location	; call errno
+	mov		[rax], rdx			; save error code to rax
+	mov		rax, -1				; set rax to -1 as return value
 	ret
