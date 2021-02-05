@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:54:05 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:54:51 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -27,7 +27,7 @@
 ; -------------------------------------------
 
 extern 		___error
-extern		malloc
+extern		___malloc
 extern		_ft_strlen
 extern		_ft_strcpy
 
