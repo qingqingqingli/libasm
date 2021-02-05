@@ -26,7 +26,7 @@ $(NAME): $(SRC_O)
 
 %.o: %.asm
 	@echo "$(GREY)Compilling: $(WHITE)$<"
-	@nasm -f macho64 -o $@ $<
+	@nasm -fmacho64 -o $@ $<
 
 clean:
 	@echo "$(RED)Cleaning all .asm files$(WHITE)"

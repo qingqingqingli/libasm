@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:43 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 12:52:47 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:41:05 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -32,7 +32,7 @@ section		.text
 global		ft_write
 
 ft_write:
-	mov		rax, 1				; 1 is syscall id for write
+	mov		rax, 0x02000004		; syscall id for write
 	syscall
 	test	rax, rax			; set condition codes
 	js		_error				; jump if negative (meaning an error occured)
