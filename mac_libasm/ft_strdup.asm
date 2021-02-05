@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:55:05 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:56:02 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -27,7 +27,7 @@
 ; -------------------------------------------
 
 extern 		___error
-extern		___malloc
+extern		_malloc
 extern		_ft_strlen
 extern		_ft_strcpy
 
@@ -44,7 +44,7 @@ _calculate_len:
 
 _malloc_dest:
 	mov		rdi, rcx		; save the required len in rdi
-	call	___malloc		; call malloc
+	call	_malloc			; call malloc
 	cmp		rax, 0			; check if malloc fails
 	je		_set_error			; go to the error routine if it fails
 
