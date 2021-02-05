@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:42:06 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:52:12 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:05:26 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -34,9 +34,7 @@ global		_ft_read
 _ft_read:
 	mov		rax, 0x02000003		; syscall id for read
 	syscall
-	test	rax, rax			; set condition codes
-	js		_set_error				; jump if negative (meaning an error occured)
-	ret
+	jc		_set__error			; jump if carry flag is set
 
 _set_error:
 	neg		rax					; negate negative rax to positive
