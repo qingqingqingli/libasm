@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:43 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:52:44 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 15:00:34 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -39,7 +39,6 @@ _ft_write:
 	ret
 
 _set__error:
-	neg		rax					; negate negative rax to positive
 	mov		rdx, rax			; save code to rdx to store
 	call	___error			; call errno
 	mov		[rax], rdx			; save error code to rax
