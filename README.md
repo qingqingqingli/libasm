@@ -19,3 +19,7 @@
 	- `ft_strdup`: duplicate a string
 
 - `Errors` during syscalls need to be checked and `Errno` to be set properly
+
+## wiki
+
+- You can check my learnings on assembly on the [wiki page](https://github.com/qingqingqingli/libasm/wiki#calling-an-asm-function-from-c-source)
