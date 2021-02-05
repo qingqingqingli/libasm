@@ -26,13 +26,11 @@ void	strlen_test()
 	char *str2 = "asdfasdfasdfasdf";
 	char *str3 = "";
 	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
-	char *str5 = NULL;
 
 	printf("strlen is \t [%ld] \nft_strlen is \t [%ld]\n\n", strlen(str1), ft_strlen(str1));
 	printf("strlen is \t [%ld] \nft_strlen is \t [%ld]\n\n", strlen(str2), ft_strlen(str2));
 	printf("strlen is \t [%ld] \nft_strlen is \t [%ld]\n\n", strlen(str3), ft_strlen(str3));
 	printf("strlen is \t [%ld] \nft_strlen is \t [%ld]\n\n", strlen(str4), ft_strlen(str4));
-	//printf("strlen is \t [%ld] \nft_strlen is \t [%ld]\n\n", strlen(str5), ft_strlen(str5)); // will seg
 
 }
 
@@ -48,14 +46,12 @@ void	strcpy_test()
 	char *str3 = "";
 	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
 	char *str5 = "this is a very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong string to test a function";
-	char *str6 = NULL;
 
 	printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str1), ft_strcpy(dst_two, str1));
 	printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str2), ft_strcpy(dst_two, str2));
 	printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str3), ft_strcpy(dst_two, str3));
 	printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str4), ft_strcpy(dst_two, str4));
 	printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str5), ft_strcpy(dst_two, str5));
-	// printf("strcpy is \t [%s] \nft_strcpy is \t [%s]\n\n", strcpy(dst_two, str6), ft_strcpy(dst_two, str6));
 }
 
 void	strcmp_test()
@@ -66,7 +62,6 @@ void	strcmp_test()
 	char *str2 = "6666asdfasdfasdfasdf";
 	char *str3 = "";
 	char *str4 = "------------------9------------------sdfsfsdfsfasdfasdf---------------asdfasdf";
-	char *str5 = NULL;
 
 	printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str1, str2), ft_strcmp(str1, str2));
 	printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str2, str3), ft_strcmp(str2, str3));
@@ -78,7 +73,6 @@ void	strcmp_test()
 	printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str2, str2), ft_strcmp(str2, str2));
 	printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str3, str3), ft_strcmp(str3, str3));
 	printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str4, str4), ft_strcmp(str4, str4));
-	// printf("strcmp is \t [%d] \t ft_strcmp is \t [%d]\n", strcmp(str5, str4), ft_strcmp(str5, str4));
 }
 
 void 	read_test(void)
@@ -121,14 +115,6 @@ void 	read_test(void)
 	printf("ft_read() errno \t [%d] \t [%s]\n", errno, strerror(errno));
 	close(fd1);
 	printf("\n");
-
-	// errno = 0;
-	// printf("read() return value \t [%zd]\n", read(0, buf1, 40));
-	// printf("read() errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	// errno = 0;
-	// printf("ft_read() return value \t [%zd]\n", ft_read(0, buf1, 40));
-	// printf("ft_read() errno \t\t [%d] \t [%s]\n", errno, strerror(errno));
-	// printf("\n");
 
 	free(buf1);
 	free(buf2);
@@ -186,5 +172,5 @@ int 	main(void)
 	return 0;
 }
 
-// Compile on Linux
-// gcc -no-pie main.c libasm.a && ./a.out
+// Compile on Macos
+// gcc main.c libasm.a && ./a.out
