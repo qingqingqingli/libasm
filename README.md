@@ -32,9 +32,12 @@
 
 ```shell
 $ cd Desktop && git clone https://github.com/qingqingqingli/libasm.git
+# for linux
 $ cd libasm/linux_libasm
-$ make
-$ gcc -no-pie main.c libasm
+$ make && gcc -no-pie main.c libasm
+# for macOS
+$ cd libasm/mac_libasm
+$ make && gcc main.c libasm
 $ ./a.out
 ```
 
