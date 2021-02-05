@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 12:52:44 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:47:06 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -26,7 +26,7 @@
 ; rax -> return value
 ; -------------------------------------------
 
-extern 		__errno_location
+extern 		___error
 extern		malloc
 extern		ft_strlen
 extern		ft_strcpy
@@ -46,7 +46,7 @@ _malloc_dest:
 	mov		rdi, rcx		; save the required len in rdi
 	call	malloc			; call malloc
 	cmp		rax, 0			; check if malloc fails
-	je		_error			; go to the error routine if it fails
+	je		_set_error			; go to the error routine if it fails
 
 _copy_string:
 	mov		rdi, rax		; save the malloced string to rdi
@@ -54,10 +54,10 @@ _copy_string:
 	call	ft_strcpy		; call strcpy & result is saved in rax
 	ret						; return dst in rax
 
-_error:
-	pop		rdi					; clean up stack if malloc fails
-	call	__errno_location	; call the errno function
-	mov		rdx, 12				; 12 stands for ENOMEM
-	mov		[rax], rdx			; save errro code into rax
-	mov		rax, 0				; change rax to 0
-	ret							; NULL is returned when malloc fails
+_set_error:
+	pop		rdi				; clean up stack if malloc fails
+	call	___error		; call the errno function
+	mov		rdx, 12			; 12 stands for ENOMEM
+	mov		[rax], rdx		; save errro code into rax
+	mov		rax, 0			; change rax to 0
+	ret						; NULL is returned when malloc fails
