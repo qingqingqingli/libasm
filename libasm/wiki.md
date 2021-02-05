@@ -32,7 +32,7 @@
 
 ### Compilation stages
 
-[![compilation_stage](https://github.com/qingqingqingli/libasm/blob/main/images/compilation_stages.png)](https://github.com/qingqingqingli/libasm)
+[![compilation_stage](https://github.com/qingqingqingli/readme_images/blob/master/liasm_0.png)](https://github.com/qingqingqingli/libasm)
 
 
 ### 80x86 instructions
