@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:52:03 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:54:05 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -38,7 +38,7 @@ _ft_strdup:
 	push	rdi				; save rdi on the stack
 
 _calculate_len:
-	call	ft_strlen		; calculate the length
+	call	_ft_strlen		; calculate the length
 	mov		rcx, rax		; len is saved in rax and copied into rcx
 	inc		rcx				; add one space for \0
 
@@ -51,7 +51,7 @@ _malloc_dest:
 _copy_string:
 	mov		rdi, rax		; save the malloced string to rdi
 	pop		rsi				; save the original rdi into rsi
-	call	ft_strcpy		; call strcpy & result is saved in rax
+	call	_ft_strcpy		; call strcpy & result is saved in rax
 	ret						; return dst in rax
 
 _set_error:
