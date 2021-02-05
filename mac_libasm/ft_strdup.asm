@@ -6,7 +6,7 @@
 ;    By: qli <qli@student.codam.nl>                   +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2021/02/05 12:52:34 by qli           #+#    #+#                  ;
-;    Updated: 2021/02/05 14:54:51 by qli           ########   odam.nl          ;
+;    Updated: 2021/02/05 14:55:05 by qli           ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -44,7 +44,7 @@ _calculate_len:
 
 _malloc_dest:
 	mov		rdi, rcx		; save the required len in rdi
-	call	malloc			; call malloc
+	call	___malloc		; call malloc
 	cmp		rax, 0			; check if malloc fails
 	je		_set_error			; go to the error routine if it fails
 
