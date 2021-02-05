@@ -32,14 +32,16 @@
 
 ```shell
 $ cd Desktop && git clone https://github.com/qingqingqingli/libasm.git
+
 # for linux
 $ cd libasm/linux_libasm
-$ make && gcc -no-pie main.c libasm
+$ make && gcc -no-pie main.c libasm.a && ./a.out
+
 # for macOS
 $ cd libasm/mac_libasm
-$ make && gcc main.c libasm
-$ ./a.out
+$ make && gcc main.c libasm && ./a.out
 ```
 
 ## Test results example
 
+[![Logo](https://github.com/qingqingqingli/readme_images/blob/master/libasm_1.png)](https://github.com/qingqingqingli/libasm)
