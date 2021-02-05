@@ -36,7 +36,7 @@ void	strlen_test()
 
 }
 
-int		strcpy_test()
+void	strcpy_test()
 {
 	printf("\n--------------ft_strcpy---------------\n\n");
 
